@@ -47,6 +47,10 @@ node default {
     ip => $::ipaddress
   }
 
+  package { "mod_ssl":
+    ensure => present
+  }
+
   class {'apache':  }
   class {'apache::mod::php': }
   apache::vhost { $vhostname:
