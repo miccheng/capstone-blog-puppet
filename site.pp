@@ -47,10 +47,6 @@ node default {
     ip => $::ipaddress
   }
 
-  package { "mod_ssl":
-    ensure => present
-  }
-
   class {'apache':  }
   class {'apache::mod::php': }
   apache::vhost { $vhostname:
@@ -74,5 +70,13 @@ node default {
     chroot_local_user => 'YES',
   }
 
-}
+  class { 'wordpress':
+    wp_owner       => 'wordpress',
+    wp_group       => 'wordpress',
+    #db_user        => 'root',
+    #db_password    => 'foo123',
+    install_dir    => '/var/www/wordpress',
+    #create_db_user => false
+  }
 
+}
