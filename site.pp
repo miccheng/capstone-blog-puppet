@@ -40,5 +40,23 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello ${fqdn}": }
+
+  $vhostname = "capstone.two.puppetlabs.vm"
+
+  host { $vhostname :
+    ip => $::ipaddress
+  }
+
+  class {'apache':  }
+  class {'apache::mod::php': }
+  apache::vhost { $vhostname:
+        priority      => '10',
+        vhost_name    => $::ipaddress,
+        port          => '80',
+        docroot       => '/var/www/wordpress/',
+        logroot       => '/var/log/httpd/',
+        serveradmin   => 'teamtwo@puppetlabs.com',
+  }
+
 }
 
