@@ -68,7 +68,7 @@ node default {
     anonymous_enable  => 'NO',
     write_enable      => 'YES',
     ftpd_banner       => 'Capstone Two FTP Server',
-    chroot_local_user => 'YES',
+    #chroot_local_user => 'YES',
   }
 
   class { 'wordpress':
