@@ -47,9 +47,7 @@ node default {
     ip => $::ipaddress
   }
 
-  class {'apache':
-    default_mods => false
-  }
+  class {'apache': }
   class {'apache::mod::php': }
   apache::vhost { $vhostname:
         priority      => '10',
