@@ -58,5 +58,10 @@ node default {
         serveradmin   => 'teamtwo@puppetlabs.com',
   }
 
+  class { 'mysql': }
+  class { 'mysql::server':
+    config_hash => { 'root_password' => 'foo123' }
+  }
+
 }
 
