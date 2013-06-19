@@ -59,9 +59,7 @@ node default {
   }
 
   class { 'mysql': }
-  class { 'mysql::server':
-    config_hash => { 'root_password' => 'foo123' }
-  }
+  class { 'mysql::server': }
   class { 'mysql::php': }
 
   class { 'vsftpd':
@@ -71,10 +69,22 @@ node default {
     #chroot_local_user => 'YES',
   }
 
+  user { "wordpress" :
+    ensure => present,
+    git    => 'wordpress',
+    shell  => '/bin/bash',
+    home   => '/home/wordpress'
+  }
+
+  group { "wordpress":
+    ensure => present
+  }
+
   class { 'wordpress':
-    db_user        => 'root',
-    db_password    => 'foo123',
-    install_dir    => '/var/www/wordpress',
+    wp_owner    => 'wordpress',
+    wp_group    => 'wordpress',
+    db_password => 'foo123',
+    install_dir => '/var/www/wordpress',
   }
 
 }
