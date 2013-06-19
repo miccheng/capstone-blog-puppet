@@ -62,6 +62,7 @@ node default {
   class { 'mysql::server':
     config_hash => { 'root_password' => 'foo123' }
   }
+  class { 'mysql::php': }
 
   class { 'vsftpd':
     anonymous_enable  => 'NO',
