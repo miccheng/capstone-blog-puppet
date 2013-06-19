@@ -63,5 +63,12 @@ node default {
     config_hash => { 'root_password' => 'foo123' }
   }
 
+  class { 'vsftpd':
+    anonymous_enable  => 'NO',
+    write_enable      => 'YES',
+    ftpd_banner       => 'Capstone Two FTP Server',
+    chroot_local_user => 'YES',
+  }
+
 }
 
