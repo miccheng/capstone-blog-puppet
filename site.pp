@@ -73,10 +73,9 @@ node default {
   class { 'wordpress':
     wp_owner       => 'wordpress',
     wp_group       => 'wordpress',
-    #db_user        => 'root',
-    #db_password    => 'foo123',
+    db_user        => 'root',
+    db_password    => 'foo123',
     install_dir    => '/var/www/wordpress',
-    #create_db_user => false
   }
 
 }
