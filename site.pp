@@ -71,9 +71,9 @@ node default {
 
   user { "wordpress" :
     ensure => present,
-    git    => 'wordpress',
+    gid    => 'wordpress',
     shell  => '/bin/bash',
-    home   => '/home/wordpress'
+    home   => '/home/wordpress',
   }
 
   group { "wordpress":
