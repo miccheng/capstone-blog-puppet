@@ -59,7 +59,9 @@ node default {
   }
 
   class { 'mysql': }
-  class { 'mysql::server': }
+  class { 'mysql::server':
+    config_hash => { 'root_password' => 'foo321' }
+  }
   class { 'mysql::php': }
 
   class { 'vsftpd':
@@ -86,6 +88,7 @@ node default {
     wp_group    => 'wordpress',
     db_password => 'foo123',
     install_dir => '/var/www/wordpress',
+    require     => Class['mysql::server']
   }
 
 }
