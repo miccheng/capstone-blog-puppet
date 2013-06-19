@@ -70,10 +70,11 @@ node default {
   }
 
   user { "wordpress" :
-    ensure => present,
-    gid    => 'wordpress',
-    shell  => '/bin/bash',
-    home   => '/home/wordpress',
+    ensure   => present,
+    password => 'foo123',
+    gid      => 'wordpress',
+    shell    => '/bin/bash',
+    home     => '/home/wordpress',
   }
 
   group { "wordpress":
