@@ -71,7 +71,7 @@ node default {
 
   user { "wordpress" :
     ensure   => present,
-    password => 'foo123',
+    password => '$1$tDyCU5xF$ucq5iIwwv06chQjoBaPBU1',
     gid      => 'wordpress',
     shell    => '/bin/bash',
     home     => '/home/wordpress',
